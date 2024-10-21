@@ -15,7 +15,7 @@ namespace ContactsAPI.Controllers
             _context = context;
         }
 
-        // Получение всех контактов 
+        // Getting all contacts with pagination support
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Contact>>> GetContacts(int pageNumber = 1, int pageSize = 10)
         {
@@ -26,7 +26,7 @@ namespace ContactsAPI.Controllers
             return Ok(contacts);
         }
 
-        // Получение контакта по ID
+        // Getting a contact by ID
         [HttpGet("{id}")]
         public async Task<ActionResult<Contact>> GetContact(int id)
         {
@@ -38,7 +38,7 @@ namespace ContactsAPI.Controllers
             return Ok(contact);
         }
 
-        // Добавление нового контакта
+        // Adding a new contact
         [HttpPost]
         public async Task<ActionResult<Contact>> AddContact(Contact contact)
         {
@@ -47,7 +47,7 @@ namespace ContactsAPI.Controllers
             return CreatedAtAction(nameof(GetContact), new { id = contact.Id }, contact);
         }
 
-        // Обновление существующего контакта
+        // Updating an existing contact
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateContact(int id, Contact contact)
         {
@@ -74,7 +74,7 @@ namespace ContactsAPI.Controllers
             return NoContent();
         }
 
-        // Удаление контакта
+        // Deleting a contact
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteContact(int id)
         {
